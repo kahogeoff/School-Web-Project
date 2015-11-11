@@ -1,7 +1,7 @@
 # School-Web-Project
 A school project of Java web application. Using Tomcat 8.
 
-### Important Note
+### Important Notes
 1. 請使用Netbeans開啟
 
 ### Using Tool
@@ -10,3 +10,4 @@ A school project of Java web application. Using Tomcat 8.
 ### Useful Stuffs
 1. [Netbeans下載](https://netbeans.org/downloads/) (請選All)
 2. [Netbeans設定Tomcat](https://technology.amis.nl/2012/01/02/installing-tomcat-7-and-configuring-as-server-in-netbeans/)
+3. [JSP介紹(wiki)](https://zh.wikipedia.org/wiki/JSP)
