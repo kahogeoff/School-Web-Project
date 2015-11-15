@@ -37,11 +37,11 @@ public class IndexPage extends HttpServlet {
     public IndexPage()
     {
         super();
-        try {
-            da = new DatabaseAccess();
-        } catch (SQLException ex) {
-            Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            da = new DatabaseAccess();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,10 +56,10 @@ public class IndexPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /* UNTESTED
+       
         try {
-            
-            rs = da.getResultSet("SELECT * FROM ABC");
+            da = new DatabaseAccess();
+            rs = da.getResultSet("SELECT * FROM user");
             request.setAttribute("resultSet", rs);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
             dispatcher.forward(request, response);
@@ -67,7 +67,7 @@ public class IndexPage extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+      
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
         dispatcher.forward(request, response);
@@ -84,6 +84,7 @@ public class IndexPage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
 
     /**

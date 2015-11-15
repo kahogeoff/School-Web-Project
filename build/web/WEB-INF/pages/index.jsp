@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,7 +31,22 @@
         <![endif]-->
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-
+        <% 
+            ResultSet rs = (ResultSet)request.getAttribute("resultSet"); 
+            
+            while(rs.next())
+            {
+        %>
+            <p>ID: <%= rs.getInt("ID") %></p>
+        <% 
+            }
+        %>
+        
+        
+        
+        
+        
+        
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -119,7 +136,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Login</button>
+                            <button type="button" class="btn btn-primary" action="auth.jsp" method="POST" value="123">Login</button>
                         </div>
                     </div>
                 </div>

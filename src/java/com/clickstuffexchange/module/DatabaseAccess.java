@@ -15,9 +15,9 @@ import java.sql.Statement;
  * @author Geoffrey
  */
 public class DatabaseAccess {
-    static final String DB_URL = "";
-    static final String DB_USERNANME = "";
-    static final String DB_PASSWORD = "";
+    static final String DB_URL = "localhost/test";
+    static final String DB_USERNANME = "root";
+    static final String DB_PASSWORD = "ya50090";
     static private Connection _connection = null;
     
     public DatabaseAccess () throws SQLException
@@ -33,11 +33,12 @@ public class DatabaseAccess {
     public static Connection getConnection(String url, String username, String password) throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection con = java.sql.DriverManager.getConnection("jdbc:mysql://"+url, username, password);
+            return con;
         } catch (Exception e) {
 
         }
-        Connection con = java.sql.DriverManager.getConnection("jdbc:mysql://"+url, username, password);
-        return con;
+        return null;
     }
     
     public ResultSet getResultSet(String sqlStatement) throws SQLException {
@@ -51,4 +52,5 @@ public class DatabaseAccess {
         }
         return null;
     }
+    
 }
