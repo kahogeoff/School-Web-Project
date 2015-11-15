@@ -4,9 +4,17 @@
         <servlet-name>TestServlet1</servlet-name>
         <servlet-class>test.TestServlet1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IndexPage</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.IndexPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
         <url-pattern>/TestServlet1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexPage</servlet-name>
+        <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -15,5 +23,8 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.jspx</welcome-file>
     </welcome-file-list>
 </web-app>
