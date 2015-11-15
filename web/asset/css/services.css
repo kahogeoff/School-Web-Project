@@ -1,0 +1,23 @@
+body{
+	padding-top:70px;
+	padding-bottom:20px;
+}
+p{
+font-family: 'Open Sans', sans-serif;
+}
+h1,h2,h3{
+font-family: 'Oswald', sans-serif;
+}
+a.btn.btn-primary.store-category-link{
+color: black;
+background-color:white;
+border-color:gray;
+}
+
+
+
+
+
+
+
+
