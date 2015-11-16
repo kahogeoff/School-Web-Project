@@ -15,9 +15,9 @@ import java.sql.Statement;
  * @author Geoffrey
  */
 public class DatabaseAccess {
-    static final String DB_URL = "localhost/test";
+    static final String DB_URL = "localhost/arcode_project";
     static final String DB_USERNANME = "root";
-    static final String DB_PASSWORD = "ya50090";
+    static final String DB_PASSWORD = "qqkk8964p0011008uaccab";
     static private Connection _connection = null;
     
     public DatabaseAccess () throws SQLException

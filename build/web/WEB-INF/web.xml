@@ -8,6 +8,14 @@
         <servlet-name>IndexPage</servlet-name>
         <servlet-class>com.clickstuffexchange.servlet.IndexPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaticPage</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.StaticPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AuthController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.AuthController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
         <url-pattern>/TestServlet1</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>IndexPage</servlet-name>
         <url-pattern>/index.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaticPage</servlet-name>
+        <url-pattern>/pages/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthController</servlet-name>
+        <url-pattern>/auth/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

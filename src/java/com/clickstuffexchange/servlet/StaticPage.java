@@ -17,33 +17,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
-
 /**
  *
  * @author Geoffrey
  */
-public class IndexPage extends HttpServlet {
+public class StaticPage extends HttpServlet {
     private DatabaseAccess da = null;
     public ResultSet rs;
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    public IndexPage()
-    {
-        super();
-//        try {
-//            da = new DatabaseAccess();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -56,20 +36,17 @@ public class IndexPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-//        try {
-//            da = new DatabaseAccess();
-//            rs = da.getResultSet("SELECT ID,File_Name FROM ar_filepath");
-//            request.setAttribute("resultSet", rs);
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
-//            dispatcher.forward(request, response);
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
-        dispatcher.forward(request, response);
+        try {
+            da = new DatabaseAccess();
+            rs = da.getResultSet("SELECT ID,File_Name FROM ar_filepath");
+            request.setAttribute("resultSet", rs);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/static"+request.getPathInfo());
+            dispatcher.forward(request, response);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(IndexPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

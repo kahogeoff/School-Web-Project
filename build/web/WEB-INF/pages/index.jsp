@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,8 +16,8 @@
         <title>CLiCK - A stuff exchange platform</title>
 
         <!-- Bootstrap -->
-        <link href="jslib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="asset/css/custom.css" rel="stylesheet">
+        <link href=<%=request.getContextPath()+"/jslib/bootstrap/dist/css/bootstrap.min.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath()+"/asset/css/custom.css"%> rel="stylesheet">
         <link rel="stylesheet" href="
               https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
@@ -31,21 +30,6 @@
         <![endif]-->
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-        <% 
-            ResultSet rs = (ResultSet)request.getAttribute("resultSet"); 
-            
-            while(rs.next())
-            {
-        %>
-            <p>ID: <%= rs.getInt("ID") %></p>
-        <% 
-            }
-        %>
-        
-        
-        
-        
-        
         
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -77,7 +61,7 @@
                     <a id="header" ></a>
                     <h1>Easy to Change</h1>
                     <p>We offer a platform for you to exchange everything that we want to change</p>
-                    <button type=button class="btn btn-lg btn-primary" onclick="location.href = 'register.html'" >
+                    <button type=button class="btn btn-lg btn-primary" onclick="location.href = <%="'"+request.getContextPath()+"/auth/register.jsp'"%>" >
                         Sign up today
                     </button>
                 </div>
@@ -580,9 +564,9 @@
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="jslib/jquery/dist/jquery.min.js"></script>
+        <script src=<%=request.getContextPath()+"/jslib/jquery/dist/jquery.min.js"%>></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="jslib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src=<%=request.getContextPath()+"/jslib/bootstrap/dist/js/bootstrap.min.js"%>></script>
 
         <script>
                     $(icon).mouseover(function () {
