@@ -22,7 +22,7 @@ public class DatabaseAccess {
     
     public DatabaseAccess () throws SQLException
     {
-        _connection = getConnection(DB_URL, DB_USERNANME, DB_PASSWORD);
+        _connection = getConnection(DB_URL+"?useUnicode=true&characterEncoding=UTF-8", DB_USERNANME, DB_PASSWORD);
     }
     
     public DatabaseAccess (String url, String username, String password) throws SQLException

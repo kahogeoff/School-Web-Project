@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clickstuffexchange.servlet;
+package com.clickstuffexchange.servlet.auth;
 
 import com.clickstuffexchange.module.DatabaseAccess;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Geoffrey
  */
-public class AuthController extends HttpServlet {
+public class RegisterController extends HttpServlet {
     private DatabaseAccess da = null;
     public ResultSet rs;
     
@@ -39,7 +39,7 @@ public class AuthController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth"+request.getPathInfo());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/register.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -54,7 +54,12 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        boolean isError = true;
+        if(isError)
+        {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/error.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     /**

@@ -580,7 +580,7 @@
 
         <script>
             $(icon).click(function () {
-                $(location).attr('href', 'register.html');
+                $(location).attr('href', 'auth/register.jsp');
             });
         </script>
 

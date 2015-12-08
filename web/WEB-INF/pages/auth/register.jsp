@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +65,7 @@
                 <h1>Register</h1>
                 <p> create a new one with your username and email</p></br>
 
-                <form name="fos_user_registraration_form" method="post" action="">
+                <form name="fos_user_registraration_form" method="post" action="register.jsp">
                     <input type="text" id="fos_user_registraration_form_username" name="fos_user_registraration_form_[username]" required="required" maxlength="255" pattern="[\.A-Za-z0-9_-]{1,50}" class="text-input" placeHolder="Username" /> </br>
 
                     <input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" maxlength="254" pattern=".{2,}" class="text-input focus" placeHolder="Email" />  </br>

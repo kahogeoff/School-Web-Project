@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>AuthController</servlet-name>
-        <servlet-class>com.clickstuffexchange.servlet.AuthController</servlet-class>
+        <servlet-class>com.clickstuffexchange.servlet.auth.RegisterController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
