@@ -53,4 +53,14 @@ public class DatabaseAccess {
         return null;
     }
     
+    public boolean modifyData(String sqlStatement) throws SQLException {
+        try {
+            Statement stmt = _connection.createStatement();
+            stmt.executeUpdate(sqlStatement);
+            
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
