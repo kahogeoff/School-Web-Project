@@ -2,3 +2,5 @@
 /mysql-connector-java-5.1.37-bin.jar
 
 nbproject/
+
+*.class
