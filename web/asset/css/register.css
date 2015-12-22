@@ -11,12 +11,10 @@ font-family: 'Open Sans', sans-serif;
 h1,h2,h3{
 font-family: 'Oswald', sans-serif;
 }
-input{
-   width:40%;
-   height:36px;
-   margin:10px;
-   font-size:20px
-}
+
+
+
+
 .button{
 background-color:rgb(90,173,173);
  color:white;

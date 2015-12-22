@@ -366,9 +366,9 @@
 
                         <div class="row" >
                             <div class="col-md-6">
-                                <a href="#" class="thumbnail">
-                                    <img src="asset/img/c.png" >
-                                </a>
+                              
+                                    <img src="asset/img/liu.jpg" >
+                                
                                 <div class="bio">
                                     <h4>YenLin</h4>
                                     <p class="pclass">CSIE</p>
@@ -389,9 +389,9 @@
                             </div>
 
                             <div class="col-md-6">
-                                <a href="#" class="thumbnail">
-                                    <img src="asset/img/c.png" >
-                                </a>
+                             
+                                    <img src="asset/img/geo.jpg" >
+                               
                                 <div class="bio">
                                     <h4>Geoffrey</h4>
                                     <p class="pclass">CSIE</p>
@@ -412,17 +412,17 @@
                             </div>
 
                             <div class="col-md-6">
-                                <a href="#" class="thumbnail">
-                                    <img src="asset/img/c.png" >
-                                </a>
+                         
+                                    <img src="asset/img/kuo.jpg" >
+                          
                                 <div class="bio">
-                                    <h4>cccc</h4>
+                                    <h4>Kuo</h4>
                                     <p class="pclass">IDM</p>
 
                                     <p class="pmotto">Life is struggle</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <a href="https://www.facebook.com/Gagkaho" title="Facebook" target="_blank">
+                                            <a href="https://www.facebook.com/profile.php?id=100002921368072" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
@@ -436,17 +436,17 @@
                             </div>
 
                             <div class="col-md-6">
-                                <a href="#" class="thumbnail">
-                                    <img src="asset/img/c.png" >
-                                </a>
+                             
+                                    <img src="asset/img/yen.jpg" >
+                            
                                 <div class="bio">
-                                    <h4>cccc</h4>
+                                    <h4>Yen</h4>
                                     <p class="pclass">IDM</p>
 
                                     <p class="pmotto">Keep fighting</p>
                                     <ul class="list-inline">
                                         <li>
-                                            <a href="https://www.facebook.com/Gagkaho" title="Facebook" target="_blank">
+                                            <a href="https://www.facebook.com/profile.php?id=100000235428874" title="Facebook" target="_blank">
                                                 <i class="fa fa-facebook"></i>
                                             </a>
                                         </li>
@@ -580,7 +580,7 @@
 
         <script>
             $(icon).click(function () {
-                $(location).attr('href', 'register.html');
+                $(location).attr('href', 'services.html');
             });
         </script>
 

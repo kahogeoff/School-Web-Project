@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,9 +9,9 @@
         <title>Bootstrap 101 Template</title>
 
         <!-- Bootstrap -->
-        <link href="jslib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="asset/css/custom.css" rel="stylesheet">
-        <link href="asset/css/services.css" rel="stylesheet">
+        <link href=<%=request.getContextPath()+"jslib/bootstrap/dist/css/bootstrap.min.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath()+"asset/css/custom.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath()+"asset/css/services.css"%> rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
@@ -32,28 +33,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">CLiCK_Exchange</a>
+                <a class="navbar-brand" href="index.html">CLiCK_Exchange</a>
                 <div class="navbar-collapse collapse">
-                  
-                   
-                       <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-              
-            <button class="btn btn-default">
-            <span class="glyphicon glyphicon-user"></span>Liu,Yen-Lin
-            </button>
-        </div>
-        
-      </form>
-  <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-                    
-                    
-                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ><a href="#header" class="abgne_gotoheader" >Home</a></li>
+                        <li ><a href="#news" class="abgne_gotoheader">Services</a></li>
+                        <li ><a href="#mycarousel" class="abgne_gotoheader">Hot</a></li>	
+                        <li ><a  href="#about" class="abgne_gotoheader" >About</a></li>
+                        <li ><a href="#contact" class="abgne_gotoheader">Contact</a></li>
+                        <li ><a href="#" data-toggle="modal" data-target="#MyModal" >Login</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -81,76 +70,32 @@
 
 	<div class="container" style="margin-bottom: 87px;">
 	<div class="container contain">
-     <h1 class="page-title" >Services</h1>
+     <h1 class="page-title">Services</h1>
 	 <div class="col-md-3">
              
 	 <div class="store-categories">
-	 <ul class="list-group store-category-list" >
+	 <ul class="store-category-list" >
          
-        <a href="/store/books" id="cate_btn" class="list-group-item btn btn-default store-category-link">書籍</a>
+         <li class="store-category-list-item"><a href="/store/books" id="cate_btn" class="btn btn-primary store-category-link">book</a></li>
          
-       <a href="/store/clothes"  id="cate_btn" class="list-group-item btn btn-default store-category-link">衣服服飾</a>
+         <li class="store-category-list-item"><a href="/store/clothes"  id="cate_btn" class="btn btn-primary store-category-link">衣服服飾</a></li>
          
-      <a href="/store/furniture" id="cate_btn" class="list-group-item btn btn-default store-category-link">大型家具</a> 
+         <li class="store-category-list-item"><a href="/store/furniture" id="cate_btn" class="btn btn-primary store-category-link">大型家具</a></li>    
          
-         <a href="/store/transports" id="cate_btn" class="list-group-item btn btn-default store-category-link">交通工具</a>   
+         <li class="store-category-list-item"><a href="/store/transports" id="cate_btn" class="btn btn-primary store-category-link">交通工具</a></li>    
          
-        <a href="/store/houseEle" id="cate_btn" class="list-group-item btn btn-default store-category-link">家電</a>  
+         <li class="store-category-list-item"><a href="/store/houseEle" id="cate_btn" class="btn btn-primary store-category-link">家電</a></li>    
          
-        <a href="/store/others" id="cate_btn" class="list-group-item btn btn-default store-category-link">其他</a>        
+         <li class="store-category-list-item"><a href="/store/others" id="cate_btn" class="btn btn-primary store-category-link">其他</a></li>          
         
          </ul>
 	 </div>
+             
+             
 	 </div>
-     
-    
-     <div class="col-md-9">
-           <div class="col-md-4">
-         <div class="store-item">
-           
-                         <a href ="detail.html">   
-                      <img src="asset/img/c.png"  id='pic_btn' class="img-rounded"> </img>
-                       </a>
-             <h3>Japanese Style Hat</h3>
-             <h4>$40</h4>
-           </div>
      </div>
-        
-         
-         <div class="col-md-4">
-           <div class="store-item">
-                       <a href ="detail.html">                          
-                      <img src="asset/img/c.png"  id='pic_btn' class="img-rounded"> </img>                       
-                       </a>
-             <h3>Japanese Style Hat</h3>
-             <h4>$40</h4>    
-     </div>
- </div>
-         </div>
-        
-        
-      
-        
-        
-    
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
             </div>
-	 </div>
+	 
 	
 	
 	<div class="navbar navbar-inverse navbar-fixed-bottom">
@@ -181,17 +126,6 @@
   $(this).fadeTo("fast",1);
   });
 </script>
-
-
-  <script>
-                    $(pic_btn).mouseover(function () {
-                        $(this).fadeTo("fast", 0.4);
-
-                    });
-                    $(pic_btn).mouseout(function () {
-                        $(this).fadeTo("fast", 1);
-                    });
-        </script>
 
 
     </body>
