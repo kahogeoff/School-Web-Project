@@ -71,7 +71,7 @@
             <div class="jumbotron text-center">
                 <a id="header" ></a>
                 <h1>Register</h1>
-                <p> create a new one with your username and email</p></br>
+                <p> create a new one with your username and email</p>
                   <!---
                 <form class="text-center" name="fos_user_registraration_form" method="post" action="">
                     <input type="text" id="fos_user_registraration_form_username" name="fos_user_registraration_form_[username]" required="required" maxlength="255" pattern="[\.A-Za-z0-9_-]{1,50}" class="text-input foucs" placeHolder="Username" /> </br>
@@ -87,36 +87,51 @@
                   !--->
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-    <label for="inputusername3" class="col-sm-2 control-label">UserName</label>
-    <div class="col-sm-10">
+                        <h4>
+    <label for="inputusername3" class="col-sm-3 control-label">UserName</label>
+   </h4>
+    <div class="col-sm-7">
+        
       <input type="text" class="form-control" id="inputUsename3" placeholder="Username" required="required" pattern="[\.A-Za-z0-9_-]{1,50}">
-    </div>
+    
+      </div>
   </div>
   <div class="form-group ">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
+      <h4>
+    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+    </h4>
+    <div class="col-sm-7">
+        <i>
       <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required="required"  pattern=".{2,}">
-    </div>
+    </i>
+      </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
+      <h4>
+    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+    </h4>
+    <div class="col-sm-7">
+        <i>
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required="required">
-    </div>
+    </i>
+      </div>
   </div>
    <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Recheck password</label>
-    <div class="col-sm-10">
+       <h4>
+    <label for="inputPassword3" class="col-sm-3 control-label">Recheck password</label>
+    </h4>
+    <div class="col-sm-7">
+        <i>
       <input type="password" class="form-control" id="inputPassword3" placeholder="RecheckPassword" required="required">
-    </div>
+    </i>
+      </div>
   </div>
- 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">登入</button>
-    </div>
+   <div class="form-group-submit">
+      <button type="submit" class="btn btn-lg" id="submit_btn" ><b>Register Now</b></button>
   </div>
+  
 </form>
+              
             </div>
 
         </div>
@@ -143,10 +158,12 @@
         <script src=<%=request.getContextPath()+"/jslib/bootstrap/dist/js/bootstrap.min.js"%>></script>
         
         <script>
-            $(sb).mouseover(function () {
-                $(this).fadeTo("fast", 0.4);
+            
+           
+          $(submit_btn).mouseover(function () {
+              $(this).fadeTo("fast", 0.4);
             });
-            $(sb).mouseout(function () {
+            $(submit_btn).mouseout(function () {
                 $(this).fadeTo("fast", 1);
             });
         </script>
