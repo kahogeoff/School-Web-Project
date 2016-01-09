@@ -1,6 +1,5 @@
-/dist/
-/mysql-connector-java-5.1.37-bin.jar
+dist/*
 
-/nbproject/
+nbproject/*
 
-/build/
+build/*

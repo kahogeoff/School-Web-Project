@@ -12,8 +12,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>CLiCK - A stuff exchange platform</title>
-
         <!-- Bootstrap -->
         <link href=<%=request.getContextPath()+"/jslib/bootstrap/dist/css/bootstrap.min.css"%> rel="stylesheet">
         <link href=<%=request.getContextPath()+"/asset/css/custom.css"%> rel="stylesheet">
@@ -43,12 +41,12 @@
                 <a class="navbar-brand" href=<%=request.getContextPath()+"/index.jsp"%>>CLiCK_Exchange</a>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ><a href="#header" class="abgne_gotoheader" >Home</a></li>
-                        <li ><a href="#news" class="abgne_gotoheader">News</a></li>
-                        <li ><a href="#mycarousel" class="abgne_gotoheader">Hot</a></li>	
-                        <li ><a  href="#about" class="abgne_gotoheader" >About</a></li>
-                        <li ><a href="#contact" class="abgne_gotoheader">Contact</a></li>
-                        <li ><a href="#" data-toggle="modal" data-target="#MyModal" >Login</a></li>
+                        <li ><a href=<%=request.getContextPath()+"/index.jsp#header"%> class="abgne_gotoheader" >Home</a></li>
+                        <li ><a href=<%=request.getContextPath()+"/index.jsp#news"%> class="abgne_gotoheader">News</a></li>
+                        <li ><a href=<%=request.getContextPath()+"/index.jsp#mycarousel"%> class="abgne_gotoheader">Hot</a></li>	
+                        <li ><a  href=<%=request.getContextPath()+"/index.jsp#about"%> class="abgne_gotoheader" >About</a></li>
+                        <li ><a href=<%=request.getContextPath()+"/index.jsp#contact"%> class="abgne_gotoheader">Contact</a></li>
+                        <li ><a href=<%=request.getContextPath()+"/index.jsp#"%> data-toggle="modal" data-target=<%=request.getContextPath()+"/index.jsp#MyModal"%>  >Login</a></li>
                     </ul>
                 </div>
             </div>

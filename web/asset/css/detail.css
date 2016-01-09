@@ -26,6 +26,14 @@ a.btn.btn-default.store-category-link{
    
 }
 
+div.col-md-9{
+    margin-top:20pt;
+}
+
+div.col-md-3{
+    margin-top: 10pt;
+}
+
 div.col-md-4{
    width:50%
 }

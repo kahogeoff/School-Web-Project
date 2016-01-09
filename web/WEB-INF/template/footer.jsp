@@ -21,22 +21,10 @@
             </div>
         </div>
 
-
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=<%=request.getContextPath()+"/jslib/jquery/dist/jquery.min.js"%>></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src=<%=request.getContextPath()+"/jslib/bootstrap/dist/js/bootstrap.min.js"%>></script>
         
-        <script>
-            $(sb).mouseover(function () {
-                $(this).fadeTo("fast", 0.4);
-            });
-            $(sb).mouseout(function () {
-                $(this).fadeTo("fast", 1);
-            });
-        </script>
-
-
     </body>
 </html>

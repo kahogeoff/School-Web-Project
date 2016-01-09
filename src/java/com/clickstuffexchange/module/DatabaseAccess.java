@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author Geoffrey
  */
 public class DatabaseAccess {
-    static final String DB_URL = "localhost/arcode_project";
+    static final String DB_URL = "localhost:8889/clickdatabase";
     static final String DB_USERNANME = "root";
     static final String DB_PASSWORD = "qqkk8964p0011008uaccab";
     static private Connection _connection = null;

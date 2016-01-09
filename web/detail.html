@@ -10,7 +10,7 @@
         <!-- Bootstrap -->
         <link href="jslib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="asset/css/custom.css" rel="stylesheet">
-        <link href="asset/css/services.css" rel="stylesheet">
+        <link href="asset/css/detail.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
@@ -32,8 +32,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">CLiCK_Exchange</a>
-                <div class="navbar-collapse collapse">
+                <a class="navbar-brand" href="index.html">CLiCK_Exchange</a>
+                     <div class="navbar-collapse collapse">
                   
                    
                        <form class="navbar-form navbar-right" role="search">
@@ -81,23 +81,23 @@
 
 	<div class="container" style="margin-bottom: 87px;">
 	<div class="container contain">
-     <h1 class="page-title" >Services</h1>
+  
 	 <div class="col-md-3">
-             
+                <h1 class="page-title">Services</h1>
 	 <div class="store-categories">
 	 <ul class="list-group store-category-list" >
          
-        <a href="/store/books" id="cate_btn" class="list-group-item btn btn-default store-category-link">書籍</a>
+        <a href="services.html" id="cate_btn" class="list-group-item btn btn-default store-category-link">書籍</a>
          
-       <a href="/store/clothes"  id="cate_btn" class="list-group-item btn btn-default store-category-link">衣服服飾</a>
+       <a href="services.html"  id="cate_btn" class="list-group-item btn btn-default store-category-link">衣服服飾</a>
          
-      <a href="/store/furniture" id="cate_btn" class="list-group-item btn btn-default store-category-link">大型家具</a> 
+      <a href="services.html" id="cate_btn" class="list-group-item btn btn-default store-category-link">大型家具</a> 
          
-         <a href="/store/transports" id="cate_btn" class="list-group-item btn btn-default store-category-link">交通工具</a>   
+         <a href="services.html" id="cate_btn" class="list-group-item btn btn-default store-category-link">交通工具</a>   
          
-        <a href="/store/houseEle" id="cate_btn" class="list-group-item btn btn-default store-category-link">家電</a>  
+        <a href="services.html" id="cate_btn" class="list-group-item btn btn-default store-category-link">家電</a>  
          
-        <a href="/store/others" id="cate_btn" class="list-group-item btn btn-default store-category-link">其他</a>        
+        <a href="services.html" id="cate_btn" class="list-group-item btn btn-default store-category-link">其他</a>        
         
          </ul>
 	 </div>
@@ -105,27 +105,72 @@
      
     
      <div class="col-md-9">
-           <div class="col-md-4">
-         <div class="store-item">
-           
-                         <a href ="detail.html">   
-                      <img src="asset/img/c.png"  id='pic_btn' class="img-rounded"> </img>
-                       </a>
-             <h3>Japanese Style Hat</h3>
-             <h4>$40</h4>
-           </div>
-     </div>
         
-         
-         <div class="col-md-4">
-           <div class="store-item">
-                       <a href ="detail.html">                          
-                      <img src="asset/img/c.png"  id='pic_btn' class="img-rounded"> </img>                       
-                       </a>
-             <h3>Japanese Style Hat</h3>
-             <h4>$40</h4>    
-     </div>
- </div>
+         <div class="store-item">
+             <h1 class="text-center">Japanese Style Hat</h1>
+             
+             <img src="asset/img/c.png"  id='pic_btn' class="img-rounded"> </img> 
+             <h3><b>Describe : </b>This is a Wondeful hat you can't miss it</h3>
+             <h4><b>Category : </b></h4>
+             <h4><b>Posted : </b></h4>
+             <h4><b>City : </b></h4>         
+           </div>
+         <br>
+       <div class="border"></div>
+        </br>
+        
+        
+         <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+       <span class="glyphicon glyphicon-phone"></span> Contact Details
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+       <p>Name : </p>
+        <p>Phone : </p>
+        <p>Email : </p> 
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" 
+          href="#collapseTwo">
+       <span class="glyphicon glyphicon-check"></span>Ask administrator to review this item
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+      <form role="form">
+    <div class="form-group">
+    <label for="exampleInputPassword1">Name</label>
+    <input type="密碼" class="form-control" id="exampleInputPassword1" placeholder="Keyin Name" required="required">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Keyin Email" required="required">
+  </div>
+  
+  <div class="form-group">
+        <label for="Comment">Message</label>
+        <textarea class="form-control" rows="3" required="required" placeholder="Write down your comment...."></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">送出</button>
+</form>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+ 
+        
          </div>
         
         
@@ -172,7 +217,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="jslib/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script>
    $(cate_btn).mouseover(function() {
   $(this).fadeTo("fast",0.4);
@@ -193,6 +238,11 @@
                     });
         </script>
 
-
+      
+      
+        
+        
+        
+        
     </body>
 </html>

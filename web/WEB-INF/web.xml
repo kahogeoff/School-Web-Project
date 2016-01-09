@@ -14,7 +14,19 @@
     </servlet>
     <servlet>
         <servlet-name>AuthController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.AuthController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
         <servlet-class>com.clickstuffexchange.servlet.auth.RegisterController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StoreController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.store.StoreController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.auth.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
@@ -30,7 +42,20 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>
-        <url-pattern>/auth/*</url-pattern>
+        <url-pattern>/auth/index.jsp</url-pattern>
+        <url-pattern>/auth/error.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/auth/register.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StoreController</servlet-name>
+        <url-pattern>/store/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/auth/login.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
