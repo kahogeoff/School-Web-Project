@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js 讓 IE8 支援 HTML5 元素與媒體查詢 -->
+    <!-- 警告：Respond.js 無法在 file:// 協定下運作 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+<div id="contact" class="container">
+  <h3 class="text-center">Post it now!!!</h3>
+  
+  <div class="row">
+    
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-sm-8 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+       <div class="col-sm-4 form-group">
+            <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text" required>
+        </div>
+    </div>
+	 
+	 
+    <div class="row">
+        <div class="col-sm-8 form-group">
+           <input class="form-control" id="email" name="email" placeholder="Email" type="text" required>
+        </div>
+    </div>
+	  
+	  
+	  
+	  
+	  <div class="row">
+        <div class="col-sm-8 form-group">
+          <input class="form-control" id="category" name="category" placeholder="category for it" type="text" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 form-group">
+          <input class="form-control" id="post" name="post" placeholder="when to post" type="text" required>
+        </div>
+      </div>	  
+	 
+	  <div class="row">
+        <div class="col-sm-8 form-group">
+          <input class="form-control" id="city" name="city" placeholder="Where to change" type="text" required>
+        </div>
+      </div>
+	  
+	  
+      <textarea class="form-control" id="describe" name="describe" placeholder="Describe for it" rows="5"></textarea>
+      <br>
+
+	  <div class="row">
+        <div class="col-sm-8 form-group">
+           <form>
+              <input type='file' id="imgInp">
+              <img id="blah" src="#" alt="your image" title="200px" width="300">
+            </form>
+        </div>
+      </div>
+	  
+	</div>
+	
+	
+    <div style="display:none"> </div> 
+	  
+	  
+    <div class="row">
+      <div class="col-sm-8 form-group">
+         <button class="btn btn-primary" type="submit">Post now</button>
+      </div>
+    </div>
+	  
+	  
+    </div>
+	
+	
+	
+	
+	
+	
+	<div class="col-md-12">
+      <p>Please contact us if you meet any problem!</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Doliu, TW</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +886 911821212</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>	   
+    </div>
+	
+	
+	
+  </div>
+  
+
+	
+
+    <!-- jQuery (Bootstrap 所有外掛均需要使用) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
+    <script src="js/bootstrap.min.js"></script>
+<script>	
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function(){
+  readURL(this);
+});   
+</script>
+	
+	
+	
+	
+	
+  </body>
+</html>
