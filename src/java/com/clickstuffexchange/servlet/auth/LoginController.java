@@ -26,9 +26,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author Geoffrey
  */
 public class LoginController extends HttpServlet {
+
     private DatabaseAccess da = null;
     public ResultSet rs_count, rs_check;
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,6 +55,8 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/login.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -71,53 +74,50 @@ public class LoginController extends HttpServlet {
             String username = request.getParameter("username");
             //String email = request.getParameter("email");
             da = new DatabaseAccess();
-            rs_count = da.getResultSet("SELECT COUNT(*) FROM click_user WHERE user_id = '"+username+"'");
-            
+            rs_count = da.getResultSet("SELECT COUNT(*) FROM click_user WHERE user_id = '" + username + "'");
+
             int count = 0;
             while (rs_count.next()) {
                 count = rs_count.getInt(1);
                 break;
             }
-            
-            if(count == 1)
-            {
-                rs_check = da.getResultSet("SELECT user_id,user_password FROM click_user WHERE user_id = '"+username+"'");
-                
+
+            if (count == 1) {
+                rs_check = da.getResultSet("SELECT user_id,user_password FROM click_user WHERE user_id = '" + username + "'");
+
                 MessageDigest md = MessageDigest.getInstance("SHA-256");
                 String password = request.getParameter("password");
-                String wait2hash = username+"_"+password;
+                String wait2hash = username + "_" + password;
                 md.update(wait2hash.getBytes("UTF-8"));
                 byte[] digest = md.digest();
-                
+
                 String hashedPassword = String.format("%064x", new java.math.BigInteger(1, digest));
                 String serverHash = "";
                 while (rs_check.next()) {
                     serverHash = rs_check.getString("user_password");
                     break;
                 }
-                if(hashedPassword.equals(serverHash))
-                {
+                if (hashedPassword.equals(serverHash)) {
                     Cookie c_user = new Cookie("user", username);
                     Cookie c_character = new Cookie("character", "normal_user");
-                    c_user.setMaxAge(7 * 24 * 60 * 60); // 一星期內有效
+                    c_user.setMaxAge(7 * 24 * 60 * 60);
                     c_character.setMaxAge(7 * 24 * 60 * 60);
                     response.addCookie(c_user);
                     response.addCookie(c_character);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
                     dispatcher.forward(request, response);
                     //Go to ok page
-                }else{
+                } else {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/error.jsp");
                     dispatcher.forward(request, response);
                 }
-            }else{
+            } else {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/error.jsp");
                 dispatcher.forward(request, response);
             }
-                    
+
             //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
             //dispatcher.forward(request, response);
-            
         } catch (SQLException ex) {
             Logger.getLogger(RegisterController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchAlgorithmException ex) {

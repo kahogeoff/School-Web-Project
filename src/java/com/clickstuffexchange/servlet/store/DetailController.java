@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.clickstuffexchange.servlet;
+package com.clickstuffexchange.servlet.store;
 
 import com.clickstuffexchange.module.DatabaseAccess;
 import java.io.IOException;
@@ -22,8 +22,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Geoffrey
  */
-public class AuthController extends HttpServlet {
-    
+public class DetailController extends HttpServlet {
+
+    private DatabaseAccess da = null;
+    public ResultSet rs;
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -36,9 +51,26 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth"+request.getPathInfo());
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher;
+        if (request.getParameter("id") == null) {
+            response.sendRedirect(".");
+        } else{
+            try {
+                da = new DatabaseAccess();
+                rs = da.getResultSet("SELECT * FROM click_item WHERE item_id='"+request.getParameter("id")+"'");
+                if(!rs.isBeforeFirst())
+                {
+                    response.sendRedirect(".");
+                }else{
+                    request.setAttribute("resultSet", rs);
+
+                    dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store/detail.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(StoreController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     /**
@@ -52,7 +84,6 @@ public class AuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
 
     /**

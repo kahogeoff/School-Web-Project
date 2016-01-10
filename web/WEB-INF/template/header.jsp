@@ -13,9 +13,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <!-- Bootstrap -->
-        <link href=<%=request.getContextPath()+"/jslib/bootstrap/dist/css/bootstrap.min.css"%> rel="stylesheet">
-        <link href=<%=request.getContextPath()+"/asset/css/custom.css"%> rel="stylesheet">
-        <link href=<%=request.getContextPath()+"/asset/css/register.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath() + "/jslib/bootstrap/dist/css/bootstrap.min.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath() + "/asset/css/custom.css"%> rel="stylesheet">
+        <link href=<%=request.getContextPath() + "/asset/css/register.css"%> rel="stylesheet">
         <link rel="stylesheet" href="
               https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
@@ -38,15 +38,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href=<%=request.getContextPath()+"/index.jsp"%>>CLiCK_Exchange</a>
+                <a class="navbar-brand" href=<%=request.getContextPath() + "/index.jsp"%>>CLiCK_Exchange</a>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li ><a href=<%=request.getContextPath()+"/index.jsp#header"%> class="abgne_gotoheader" >Home</a></li>
-                        <li ><a href=<%=request.getContextPath()+"/index.jsp#news"%> class="abgne_gotoheader">News</a></li>
-                        <li ><a href=<%=request.getContextPath()+"/index.jsp#mycarousel"%> class="abgne_gotoheader">Hot</a></li>	
-                        <li ><a  href=<%=request.getContextPath()+"/index.jsp#about"%> class="abgne_gotoheader" >About</a></li>
-                        <li ><a href=<%=request.getContextPath()+"/index.jsp#contact"%> class="abgne_gotoheader">Contact</a></li>
-                        <li ><a href=<%=request.getContextPath()+"/index.jsp#"%> data-toggle="modal" data-target=<%=request.getContextPath()+"/index.jsp#MyModal"%>  >Login</a></li>
+                        <li ><a href=<%=request.getContextPath() + "/index.jsp#header"%> class="abgne_gotoheader" >Home</a></li>
+                        <li ><a href=<%=request.getContextPath() + "/index.jsp#news"%> class="abgne_gotoheader">News</a></li>
+                        <li ><a href=<%=request.getContextPath() + "/index.jsp#mycarousel"%> class="abgne_gotoheader">Hot</a></li>	
+                        <li ><a href=<%=request.getContextPath() + "/index.jsp#about"%> class="abgne_gotoheader" >About</a></li>
+                        <li ><a href=<%=request.getContextPath() + "/index.jsp#contact"%> class="abgne_gotoheader">Contact</a></li>
+                        <li ><a href=<%=request.getContextPath() + "/auth/login.jsp"%>>Login</a></li>
                     </ul>
                 </div>
             </div>

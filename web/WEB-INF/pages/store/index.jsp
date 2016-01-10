@@ -8,6 +8,7 @@
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <% ResultSet rs = (ResultSet) request.getAttribute("resultSet");%>
+<% boolean canBack = (boolean) request.getAttribute("withFilter");%>
 
 <jsp:include page="../../template/header.jsp" />
 <head>
@@ -40,24 +41,44 @@
             </div>
 
             <div class="col-md-9">
+                
+
                 <%
-                    while (rs.next()) 
-                    {
+                    if (!rs.isBeforeFirst()) {
                 %>
                 <div class="col-md-4">
                     <div class="store-item">
-                        <a href =<%=request.getContextPath() + "/store/detail.jsp"%>>   
-                            <img style='display:block; width:100px;height:100px;' src=<%= "data:image;base64,"+rs.getString("item_picture")%>  id='pic_btn' class="img-rounded"> </img>
-                        </a>
-                        <h3><%= rs.getString("item_name") %></h3>
-                        <h4>使用時間：<%= rs.getString("item_duration") %></h4>
+                        <h1>Nothing right here... :(</h1>
                     </div>
                 </div>
                 <%
                     }
                 %>
-
+                <%
+                    while (rs.next()) {
+                %>
+                <div class="col-md-4">
+                    <div class="store-item">
+                        <a href =<%=request.getContextPath() + "/store/detail.jsp?id=" + rs.getString("item_id")%>>   
+                            <img style='display:block; width:100px;height:100px;' src=<%= "data:image;base64," + rs.getString("item_picture")%>  id='pic_btn' class="img-rounded"> </img>
+                        </a>
+                        <h3><%= rs.getString("item_name")%></h3>
+                        <h4>使用時間：<%= rs.getString("item_duration")%></h4>
+                    </div>
+                </div>
+                <%
+                    }
+                %>
             </div>
+            <%
+                if (canBack) {
+            %>  
+            <div align="right">
+                <a href=<%=request.getContextPath() + "/store"%> class="btn" >Back</a>
+            </div>
+            <%
+                }
+            %>
 
         </div>
     </div>

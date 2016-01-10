@@ -22,6 +22,10 @@
                 <p>We offer a platform for you to exchange everything that we want to change</p>
                 <a class="btn btn-lg btn-primary" href=<%=request.getContextPath() + "/auth/register.jsp"%>>
                     Sign up today
+                </a> 
+                   -or-
+                <a class="btn btn-lg btn-default" href="#" data-toggle="modal" data-target="#MyModal">
+                    Log in now
                 </a>
             </div>
         </section>
@@ -51,7 +55,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="MyModal"  role="dialog">
+        <div class="modal fade" id="MyModal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

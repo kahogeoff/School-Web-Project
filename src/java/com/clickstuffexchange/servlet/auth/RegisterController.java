@@ -83,7 +83,8 @@ public class RegisterController extends HttpServlet {
                 //Go to ok page
                 da.modifyData("INSERT INTO click_user (user_id,user_password,user_name,user_email,user_contactNum,user_age) VALUES "
                         + "('"+username+"','"+String.format("%064x", new java.math.BigInteger(1, digest))+"','無名氏','"+email+"','00000000',0)");
-                response.sendRedirect("../index.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/login.jsp");
+                dispatcher.forward(request, response);
             }
             //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
             //dispatcher.forward(request, response);

@@ -55,20 +55,31 @@ public class StoreController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher;
-        if (request.getPathInfo() == null || request.getPathInfo().equals("/index.jsp")) {
+        if (request.getPathInfo() == null || request.getPathInfo().equals("/index.jsp") || request.getPathInfo().equals("/")) {
             try {
                 da = new DatabaseAccess();
-                rs = da.getResultSet("SELECT item_name,item_duration,item_picture FROM click_item");
+                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture FROM click_item");
                 request.setAttribute("resultSet", rs);
+                
+                request.setAttribute("withFilter", false);
                 
                 dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store/index.jsp");
                 dispatcher.forward(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(StoreController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store" + request.getPathInfo());
-            dispatcher.forward(request, response);
+        } else if(!request.getPathInfo().contains("/detail.jsp")){
+            try {
+                da = new DatabaseAccess();
+                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture FROM click_item WHERE item_type='"+request.getPathInfo().substring(1)+"'");
+                request.setAttribute("resultSet", rs);
+                request.setAttribute("withFilter", true);
+                
+                dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store/index.jsp");
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(StoreController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

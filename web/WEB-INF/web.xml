@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>antiResourceLocking</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>antiJARLocking</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <servlet>
         <servlet-name>TestServlet1</servlet-name>
         <servlet-class>test.TestServlet1</servlet-class>
@@ -27,6 +35,10 @@
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>com.clickstuffexchange.servlet.auth.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.store.DetailController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
@@ -56,6 +68,10 @@
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/auth/login.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailController</servlet-name>
+        <url-pattern>/store/detail.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
