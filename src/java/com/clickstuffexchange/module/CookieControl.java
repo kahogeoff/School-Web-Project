@@ -18,7 +18,7 @@ public class CookieControl {
         cookies = c;
     }
     
-    boolean isExistValue(String key, String value){
+    public boolean isExistValue(String key, String value){
         if(cookies!=null)
         {
             for(int i = 0; i < cookies.length; ++i)
@@ -36,7 +36,7 @@ public class CookieControl {
         return false;
     }
     
-    boolean isExistKey(String key, String value){
+    public boolean isExistKey(String key){
         if(cookies!=null)
         {
             for(int i = 0; i < cookies.length; ++i)
@@ -51,7 +51,7 @@ public class CookieControl {
         return false;
     }
     
-    String getValue(String key){
+    public String getValue(String key){
         if(cookies != null)
         {
             for(int i = 0; i < cookies.length; ++i)

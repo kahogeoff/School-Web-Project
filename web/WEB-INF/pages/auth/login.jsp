@@ -4,8 +4,18 @@
     Author     : Geoffrey
 --%>
 
+<%@page import="com.clickstuffexchange.module.CookieControl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    Cookie[] cookies = request.getCookies();
+    CookieControl cc = new CookieControl(cookies);
+    
+    if(cc.isExistKey("username"))
+    {
+        response.sendRedirect("..");
+    }
+%>
 <jsp:include page="../../template/header.jsp" />
 <head>
     <title>CLiCK - A stuff exchange platform [LOGIN]</title>

@@ -7,15 +7,12 @@ package com.clickstuffexchange.servlet.store;
 
 import com.clickstuffexchange.module.DatabaseAccess;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,7 +55,7 @@ public class StoreController extends HttpServlet {
         if (request.getPathInfo() == null || request.getPathInfo().equals("/index.jsp") || request.getPathInfo().equals("/")) {
             try {
                 da = new DatabaseAccess();
-                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture FROM click_item");
+                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture,user_id FROM click_item");
                 request.setAttribute("resultSet", rs);
                 
                 request.setAttribute("withFilter", false);
@@ -71,7 +68,7 @@ public class StoreController extends HttpServlet {
         } else if(!request.getPathInfo().contains("/detail.jsp")){
             try {
                 da = new DatabaseAccess();
-                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture FROM click_item WHERE item_type='"+request.getPathInfo().substring(1)+"'");
+                rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture,user_id FROM click_item WHERE item_type='"+request.getPathInfo().substring(1)+"'");
                 request.setAttribute("resultSet", rs);
                 request.setAttribute("withFilter", true);
                 

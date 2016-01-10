@@ -64,6 +64,7 @@
                         </a>
                         <h3><%= rs.getString("item_name")%></h3>
                         <h4>使用時間：<%= rs.getString("item_duration")%></h4>
+                        <h4>Post by: <%= rs.getString("user_id")%></h4>
                     </div>
                 </div>
                 <%

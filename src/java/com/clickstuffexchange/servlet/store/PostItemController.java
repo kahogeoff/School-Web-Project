@@ -5,6 +5,7 @@
  */
 package com.clickstuffexchange.servlet.store;
 
+import com.clickstuffexchange.module.CookieControl;
 import com.clickstuffexchange.module.DatabaseAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,10 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Geoffrey
  */
-public class DetailController extends HttpServlet {
+public class PostItemController extends HttpServlet {
 
     private DatabaseAccess da = null;
     public ResultSet rs;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,10 +38,6 @@ public class DetailController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -51,31 +50,20 @@ public class DetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher;
-        if (request.getParameter("id") == null) {
-            response.sendRedirect(".");
-        } else{
-            try {
-                da = new DatabaseAccess();
-                rs = da.getResultSet("SELECT click_item.*, click_exchange_list.area, click_user.user_name, click_user.user_email, click_user.user_contactNum " +
-                            "FROM click_item " +
-                            "JOIN click_exchange_list " +
-                            "ON click_item.item_id = click_exchange_list.item_id " +
-                            "JOIN click_user " +
-                            "ON click_user.user_id = click_item.user_id "
-                        + "WHERE click_item.item_id='"+request.getParameter("id")+"'");
-                if(!rs.isBeforeFirst() || rs.wasNull())
-                {
-                    response.sendRedirect(".");
-                }else{
-                    request.setAttribute("resultSet", rs);
 
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store/detail.jsp");
-                    dispatcher.forward(request, response);
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(StoreController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        Cookie[] cookies = request.getCookies();
+        CookieControl cc = new CookieControl(cookies);
+        String post_user = cc.getValue("username");
+        try {
+            da = new DatabaseAccess();
+            rs = da.getResultSet("SELECT user_id,user_name,user_email,user_contactNum FROM click_user WHERE user_id='" + post_user+ "'");
+            
+            request.setAttribute("resultSet", rs);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/store/postitem.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(PostItemController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

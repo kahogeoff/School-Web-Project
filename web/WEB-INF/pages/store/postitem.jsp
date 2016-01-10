@@ -4,9 +4,14 @@
     Author     : Geoffrey
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:include page="../../template/header.jsp" />
+<%
+    ResultSet rs = (ResultSet) request.getAttribute("resultSet");
+    rs.next();
+%>
 <head>
     <title>CLiCK - A stuff exchange platform [POST]</title>
     <!-- HTML5 shim and Respond.js 讓 IE8 支援 HTML5 元素與媒體查詢 -->
@@ -26,17 +31,22 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-sm-8 form-group">
-                            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-                        </div>
-                        <div class="col-sm-4 form-group">
-                            <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text" required>
+                            <label>Name: </label>
+                            <%= rs.getString("user_name")%>
                         </div>
                     </div>
 
+                    <div class="row">                        
+                        <div class="col-sm-8 form-group">
+                            <label>Phone number: </label>
+                            <%= rs.getString("user_contactNum")%>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
-                            <input class="form-control" id="email" name="email" placeholder="Email" type="text" required>
+                            <label>E-mail: </label>
+                            <%= rs.getString("user_email")%>                        
                         </div>
                     </div>
 
@@ -44,13 +54,7 @@
                         <div class="col-sm-8 form-group">
                             <input class="form-control" id="category" name="category" placeholder="category for it" type="text" required>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-8 form-group">
-                            <input class="form-control" id="post" name="post" placeholder="when to post" type="text" required>
-                        </div>
-                    </div>	  
+                    </div>  
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
@@ -58,18 +62,15 @@
                         </div>
                     </div>
 
-
                     <textarea class="form-control" id="describe" name="describe" placeholder="Describe for it" rows="5"></textarea>
                     <br>
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
-                            <input type='file' id="imgInp">
+                            <input type='file' id="imgInp" name="item_picture">
                             <img id="blah" src="#" alt="your image" title="200px" width="300">
-
                         </div>
                     </div>
-
                 </div>
 
 

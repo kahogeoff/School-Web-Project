@@ -3,9 +3,13 @@
     Created on : 2015/12/8, 下午 04:31:11
     Author     : geoffreycheung
 --%>
-
+<%@page import="com.clickstuffexchange.module.CookieControl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    Cookie[] cookies = request.getCookies();
+    CookieControl cc = new CookieControl(cookies);
+%>
 <html>
     <head>
         <meta charset="utf-8">
@@ -41,12 +45,32 @@
                 <a class="navbar-brand" href=<%=request.getContextPath() + "/index.jsp"%>>CLiCK_Exchange</a>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <% if (!cc.isExistKey("username")) {%>
                         <li ><a href=<%=request.getContextPath() + "/index.jsp#header"%> class="abgne_gotoheader" >Home</a></li>
                         <li ><a href=<%=request.getContextPath() + "/index.jsp#news"%> class="abgne_gotoheader">News</a></li>
                         <li ><a href=<%=request.getContextPath() + "/index.jsp#mycarousel"%> class="abgne_gotoheader">Hot</a></li>	
                         <li ><a href=<%=request.getContextPath() + "/index.jsp#about"%> class="abgne_gotoheader" >About</a></li>
                         <li ><a href=<%=request.getContextPath() + "/index.jsp#contact"%> class="abgne_gotoheader">Contact</a></li>
                         <li ><a href=<%=request.getContextPath() + "/auth/login.jsp"%>>Login</a></li>
+                        <%} else {%>
+                        <form class="navbar-form navbar-right" method="POST">
+                            <div class="form-group">
+
+                                <button class="btn btn-default" >
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    <%= cc.getValue("username") %>
+                                </button>
+                                <input type="hidden" name="username" value=<%= cc.getValue("username") %> />
+                            </div>
+                        </form>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+
+                        <%}%>
                     </ul>
                 </div>
             </div>

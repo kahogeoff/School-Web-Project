@@ -1,9 +1,16 @@
+
+<%@page import="com.clickstuffexchange.module.CookieControl"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ page import="java.util.Date"%>
 <!DOCTYPE html>
 <%
     ResultSet rs = (ResultSet) request.getAttribute("resultSet");
     rs.next();
+
+    Cookie[] cookies = request.getCookies();
+    CookieControl cc = new CookieControl(cookies);
 %>
 
 <jsp:include page="../../template/header.jsp" />
@@ -49,12 +56,17 @@
                     <div align="center">
                         <img style='display:block; width:300px;height:300px;' src=<%= "data:image;base64," + rs.getString("item_picture")%>  id='pic_btn' class="img-rounded"> </img> 
                     </div>
-                    
+
                     <div>
                         <h4><b>Describe : </b><%= rs.getString("item_describe") == null ? "No describe" : rs.getString("item_describe")%></h4>
                         <h4><b>Category : </b><%= rs.getString("item_type")%></h4>
-                        <h4><b>Posted : </b><%= rs.getString("item_day")%></h4>
-                        <h4><b>City : </b></h4>   
+                        <h4><b>Posted : </b><%
+                            Date date = rs.getTimestamp("item_day");
+                            String strDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+                            %>
+                            <%=strDate%></h4>
+                        <h4><b>Posted By : </b><%= rs.getString("user_id")%></h4>
+                        <h4><b>City : </b><%= rs.getString("area")%></h4>   
                     </div>
                 </div>
                 <br>
@@ -73,9 +85,20 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>Name : </p>
-                                <p>Phone : </p>
-                                <p>Email : </p> 
+                                <p>Name : <%= rs.getString("user_name")%></p>
+                                <p>Phone : 
+                                    <% if (!rs.getString("user_contactNum").isEmpty()) {%>
+                                    <%=rs.getString("user_contactNum")%>
+                                    <% } else {%>
+                                    <i>*NO PHONE NUMBER*</i>
+                                    <%}%></p>
+                                <p>Email : 
+                                    <% if (!rs.getString("user_email").isEmpty()) {%>
+                                    <a href=<%= "mailto:" + rs.getString("user_email")%>><%=rs.getString("user_email")%></a>
+                                    <% } else {%>
+                                    <i>*NO EMAIL*</i>
+                                    <%}%>
+                                </p> 
                             </div>
                         </div>
                     </div>
@@ -90,6 +113,7 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
+                                <% if (cc.isExistKey("username")) {%>
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Name</label>
@@ -106,6 +130,9 @@
                                     </div>
                                     <button type="submit" class="btn btn-default">Submit</button>
                                 </form>
+                                <%} else {%>
+                                <h2>Please login first</h2>
+                                <%}%>
                             </div>
                         </div>
                     </div>

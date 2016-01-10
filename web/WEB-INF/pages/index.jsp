@@ -4,12 +4,17 @@
     Author     : Geoffrey
 --%>
 
+<%@page import="com.clickstuffexchange.module.CookieControl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
+<%
+    Cookie[] cookies = request.getCookies();
+    CookieControl cc = new CookieControl(cookies);
+%>
 <jsp:include page="../template/header.jsp" />
 <head>
-    <title>CLiCK - A stuff exchange platform [REGISTER]</title>
+    <title>CLiCK - A stuff exchange platform</title>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -20,13 +25,22 @@
                 <a id="header" ></a>
                 <h1>Easy to Change</h1>
                 <p>We offer a platform for you to exchange everything that we want to change</p>
+                
+                <p>
+                <%if (!cc.isExistKey("username")) {%>
                 <a class="btn btn-lg btn-primary" href=<%=request.getContextPath() + "/auth/register.jsp"%>>
                     Sign up today
                 </a> 
-                   -or-
+                -or-
                 <a class="btn btn-lg btn-default" href="#" data-toggle="modal" data-target="#MyModal">
                     Log in now
                 </a>
+                <% } else {%>
+                <a class="btn btn-lg btn-primary" href=<%=request.getContextPath() + "/store/postitem.jsp"%>>
+                    Post it now!!
+                </a> 
+                <%} %>
+                </p>
             </div>
         </section>
 
@@ -93,42 +107,42 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <span  id="icon" class="glyphicon glyphicon-off"> </span>
+                            <span  id="icon" class="glyphicon glyphicon-book"> </span>
                             <div class="t">
-                                <h4>POWER</h4>
+                                <h4>BOOKS</h4>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <span id="icon" class="glyphicon glyphicon-heart"></span>
+                            <span id="icon" class="glyphicon glyphicon-user"></span>
                             <div class="t">
-                                <h4>LOVE</h4>
+                                <h4>CLOTHS</h4>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <span id="icon" class="glyphicon glyphicon-lock"></span>
+                            <span id="icon" class="glyphicon glyphicon-bed"></span>
                             <div class="t">
-                                <h4>JOB DONE</h4>
+                                <h4>FURNITURE</h4>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-4">
-                            <span id="icon" class="glyphicon glyphicon-leaf"></span>
+                            <span id="icon" class="glyphicon glyphicon-road"></span>
                             <div class="t">
-                                <h4>GREEN</h4>
+                                <h4>TRANSPORTS</h4>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <span id="icon" class="glyphicon glyphicon-certificate"></span>
+                            <span id="icon" class="glyphicon glyphicon-phone-alt"></span>
                             <div class="t">
-                                <h4>CERTIFIED</h4>
+                                <h4>HOME APPLIANCES</h4>
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <span id="icon" class="glyphicon glyphicon-wrench"></span>
+                            <span id="icon" class="glyphicon glyphicon-gift"></span>
                             <div class="t">
-                                <h4>HARD WORK</h4>
+                                <h4>OTHERS</h4>
                             </div>
                         </div>
                     </div>
@@ -334,14 +348,14 @@
 
     <script>
         $(icon).click(function () {
-            $(location).attr('href', 'store/index.jsp');
+            $(location).attr('href', '<%=request.getContextPath() + "/store/index.jsp"%>');
         });
     </script>
 
     <script>
         $(document).ready(function () {
             // Add smooth scrolling to all links in navbar + footer link
-            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+            $(".abgne_gotoheader").on('click', function (event) {
 
                 // Prevent default anchor click behavior
                 event.preventDefault();

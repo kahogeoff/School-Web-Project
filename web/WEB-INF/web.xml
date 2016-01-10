@@ -40,6 +40,10 @@
         <servlet-name>DetailController</servlet-name>
         <servlet-class>com.clickstuffexchange.servlet.store.DetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostItemController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.store.PostItemController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
         <url-pattern>/TestServlet1</url-pattern>
@@ -72,6 +76,10 @@
     <servlet-mapping>
         <servlet-name>DetailController</servlet-name>
         <url-pattern>/store/detail.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostItemController</servlet-name>
+        <url-pattern>/store/postitem.jsp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

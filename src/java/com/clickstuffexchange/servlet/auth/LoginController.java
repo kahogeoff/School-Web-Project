@@ -7,7 +7,6 @@ package com.clickstuffexchange.servlet.auth;
 
 import com.clickstuffexchange.module.DatabaseAccess;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
@@ -98,14 +97,15 @@ public class LoginController extends HttpServlet {
                     break;
                 }
                 if (hashedPassword.equals(serverHash)) {
-                    Cookie c_user = new Cookie("user", username);
+                    Cookie c_user = new Cookie("username", username);
                     Cookie c_character = new Cookie("character", "normal_user");
                     c_user.setMaxAge(7 * 24 * 60 * 60);
                     c_character.setMaxAge(7 * 24 * 60 * 60);
+                    c_user.setPath("/");
+                    c_character.setPath("/");
                     response.addCookie(c_user);
                     response.addCookie(c_character);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("..");
                     //Go to ok page
                 } else {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/error.jsp");
