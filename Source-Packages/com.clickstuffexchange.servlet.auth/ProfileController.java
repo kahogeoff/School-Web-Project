@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.clickstuffexchange.servlet.auth;
-
 import com.clickstuffexchange.module.DatabaseAccess;
 import com.clickstuffexchange.servlet.store.StoreController;
 import java.io.IOException;
@@ -49,7 +48,7 @@ public class ProfileController extends HttpServlet {
         RequestDispatcher dispatcher;
         try {
             da = new DatabaseAccess();
-            rs = da.getResultSet("SELECT * FROM click_user WHERE user_id='" + "Geoff4321" + "'");
+            rs = da.getResultSet("SELECT * FROM click_user WHERE user_id='" + "YENLIN" + "'");
             if (!rs.isBeforeFirst()) {
                 response.sendRedirect(".");
             } else {
@@ -77,18 +76,20 @@ public class ProfileController extends HttpServlet {
         String errorMsg = "";
         try {
             String username = request.getParameter("user_name");
+            username = new String(username.getBytes("ISO-8859-1"), "UTF8");
             String userID = request.getParameter("user_id");
             String useremail = request.getParameter("user_email");
             String userContact = request.getParameter("user_contactNum");
             String userage = request.getParameter("user_age");
-           
+            String imagebase64=request.getParameter("img_Base64");
             da = new DatabaseAccess();
                 //Go to ok page
-               
+              
            da.modifyData("update click_user set user_id='"+userID+"', user_name='"+username+"', user_email='"+useremail+"', user_contactNum='"+userContact+"', user_age='"+userage+"'"+
-                             "where user_id = '" + "Geoff4321" + "'");
+                         ", img_Base64='"+imagebase64 + "'where user_id = '" + "YENLIN'" );
        
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/auth/profile.jsp");
+           
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
                 dispatcher.forward(request, response);
             
             //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/index.jsp");
