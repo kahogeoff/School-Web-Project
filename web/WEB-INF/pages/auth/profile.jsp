@@ -21,11 +21,11 @@
     <div class="container ">
         <section style="padding-bottom: 50px; padding-top: 50px;">
             <div class="row">
+                  <form class="form-horizontal" role="form" method="post" action=<%=request.getContextPath() + "/auth/profile.jsp"%>>
                 <div class="col-md-3">
-                    <div class="text-center">
-                        <img  id="profile_image" src="#" class="avatar img-circle" alt="your image" height="150" width="150"></br>
-                        <input type="file" id="imgInp" class="form-control">
-                    </div>
+                        <img   id="blah" src=<%= "data:image;base64," + rs.getString("img_Base64")%> class="avatar img-circle" alt="your image" height="150" width="150"></br>
+                        <input type="file" id="imgInp"  required="required">
+                        <input type="hidden" id="fkmylife" name="img_Base64" value=""  >
                 </div>
 
 
@@ -44,34 +44,40 @@
                      <h1 class="text-center"></h1>
                     
                     -->
-                    <div class="form-group col-md-6" method="post" action=<%=request.getContextPath() + "/auth/profile.jsp"%>>
+                    
+                    <div class="form-group col-md-6">
                         <h3>Change Your Personal Profile</h3>   
                         <label>Registered Name</label>
-                        <input type="text" class="form-control" name="user_name" placeholder=<%= rs.getString("user_name")%>>
+                        <input type="text" class="form-control" name="user_name" required="required"    placeholder=<%= rs.getString("user_name")%>>
                         <label>Registered ID</label>
-                        <input type="text" class="form-control" name="user_id" placeholder=<%= rs.getString("user_id")%>>
+                        <input type="text" class="form-control" name="user_id"  required="required" placeholder=<%= rs.getString("user_id")%>>
                         <label>Registered Email</label>
-                        <input type="text" class="form-control" name="user_email" placeholder=<%= rs.getString("user_email")%>>
+                        <input type="text" class="form-control" name="user_email"  required="required"     placeholder=<%= rs.getString("user_email")%>>
                         <label>Registered Contact Number</label>
-                        <input type="text" class="form-control" name="user_contactNum" placeholder=<%= rs.getString("user_contactNum")%>>
+                        <input type="text" class="form-control" name="user_contactNum"    required="required"      placeholder=<%= rs.getString("user_contactNum")%>>
                         <label>Registered Age</label>
-                        <input type="text" class="form-control" name="user_age" placeholder=<%= rs.getString("user_age")%>>
+                        <input type="text" class="form-control" name="user_age"     required="required"            placeholder=<%= rs.getString("user_age")%>>
                         <br>
-                           <button type="submit" class="btn btn-lg" id="submit_btn" ><b>Update Details</b></button>
+                           <button type="submit" class="btn btn-lg" id="submit_btn"  ><b>Update Details</b></button>
                     </div>
+                        </form>
 
                     <!-- 更改密碼   -->
+                     <form class="form-horizontal" role="form" method="post" action=<%=request.getContextPath() + "/auth/register.jsp"%>>
+               
                     <div class="form-group col-md-6">
                         <h3>Change Your Password</h3>
                         <label>Enter Old Password</label>
-                        <input type="password" class="form-control" name="old_password">
+                        <input type="password" class="form-control" name="old_password" id="old">
                         <label>Enter New Password</label>
-                        <input type="password" class="form-control" name="new_password">
+                        <input type="password" class="form-control" name="new_password" id="new">
                         <label>Confirm New Password</label>
-                        <input type="password" class="form-control" name="confirm_password" />
+                        <input type="password" class="form-control" name="confirm_password" id="comfirm"  >
                         <br>
-                        <a href="#" class="btn btn-warning"><b>Change Password</b></a>
+                         <button type="submit" class="btn btn-lg" id="submit_btn"  ><b>change password</b></button>
                     </div>
+                                           </form>
+    
                 </div>
             </div>
             <!-- ROW END -->
@@ -96,8 +102,9 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#profile_image').attr('src', e.target.result);
-                }
+                    $('#blah').attr('src', e.target.result);
+                    $('#fkmylife').attr('value', e.target.result.substring((e.target.result.indexOf(',')) + 1));
+                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
@@ -106,5 +113,30 @@
         });
     </script>
 
+    <script type="text/javascript">
+window.onload = function () {
+	document.getElementById("new_password").onchange = validatePassword;
+	document.getElementById("confirm_password").onchange = validatePassword;
+}
+function validatePassword(){
+var pass2=document.getElementById("confirm_password").value;
+var pass1=document.getElementById("new_password").value;
+if(pass1!=pass2)
+	document.getElementById("confirm_password").setCustomValidity("Passwords Don't Match");
+else
+	document.getElementById("confirm_password").setCustomValidity('');	 
+//empty string means no validation error
+}
+</script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </body>
 <jsp:include page="../../template/footer.jsp" />
