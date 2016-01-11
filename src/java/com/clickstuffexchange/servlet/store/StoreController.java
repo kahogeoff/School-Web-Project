@@ -65,7 +65,7 @@ public class StoreController extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(StoreController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else if(!request.getPathInfo().contains("/detail.jsp")){
+        } else if(!request.getPathInfo().contains("/detail.jsp") || !request.getPathInfo().contains("/postitem.jsp")){
             try {
                 da = new DatabaseAccess();
                 rs = da.getResultSet("SELECT item_id,item_name,item_duration,item_picture,user_id FROM click_item WHERE item_type='"+request.getPathInfo().substring(1)+"'");

@@ -56,13 +56,13 @@
                         <form class="navbar-form navbar-right" method="POST">
                             <div class="form-group">
 
-                                <button class="btn btn-default" >
+                                <a href=<%=request.getContextPath() + "/auth/profile.jsp"%> class="btn btn-default" >
                                     <span class="glyphicon glyphicon-user"></span>
                                     <%= cc.getValue("username") %>
-                                </button>
-                                <input type="hidden" name="username" value=<%= cc.getValue("username") %> />
+                                </a>
                             </div>
                         </form>
+                        
                         <form class="navbar-form navbar-right" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">

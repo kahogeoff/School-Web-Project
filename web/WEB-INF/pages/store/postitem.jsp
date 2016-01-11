@@ -27,8 +27,8 @@
         <h3 class="text-center">Post it now!!!</h3>
 
         <div class="row">
-            <form>
-                <div class="col-md-8">
+            <form class="form-horizontal" role="form" method="post" action=<%=request.getContextPath() + "/store/postitem.jsp"%>>
+                <div class="col-md-4">
                     <div class="row">
                         <div class="col-sm-8 form-group">
                             <label>Name: </label>
@@ -49,39 +49,63 @@
                             <%= rs.getString("user_email")%>                        
                         </div>
                     </div>
+                        
+                    <div class="row">
+                        <div class="col-sm-8 form-group">
+                            <label>Item name: </label>
+                            <input class="form-control" id="name" name="name" placeholder="Name of the item" type="text" required>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
-                            <input class="form-control" id="category" name="category" placeholder="category for it" type="text" required>
+                            <label>Categories: </label>
+                            <select class="form-control" name="type">
+                                <option value="books">書籍</option>
+                                <option value="clothes">衣服服飾</option>
+                                <option value="furniture">大型家具</option>
+                                <option value="transports">交通工具</option>
+                                <option value="houseEle">家電</option>
+                                <option value="others">其他</option>
+                            </select>
                         </div>
                     </div>  
+                        
+                    <div class="row">
+                        <div class="col-sm-8 form-group">
+                            <label>使用時間: </label>
+                            <input class="form-control" id="duration" name="duration" placeholder="How long had been used?" type="text" required>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
+                            <label>City: </label>
                             <input class="form-control" id="city" name="city" placeholder="Where to change" type="text" required>
                         </div>
                     </div>
 
-                    <textarea class="form-control" id="describe" name="describe" placeholder="Describe for it" rows="5"></textarea>
-                    <br>
+                    <div class="row">
+                        <div class="col-sm-8 form-group">
+                            <textarea class="form-control" id="describe" name="describe" placeholder="Describe for it" rows="5"></textarea>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-sm-8 form-group">
-                            <input type='file' id="imgInp" name="item_picture">
-                            <img id="blah" src="#" alt="your image" title="200px" width="300">
+                            <button class="btn btn-primary" type="submit">Post now</button>
                         </div>
                     </div>
-                </div>
 
+                </div>
+                <div class="col-sm-4 form-group">
+                    <input type='file' id="imgInp" required>
+                    <input type="hidden" id="fkmylife" name="img_Base64" value="" />
+                    <img id="blah" src="#" alt="your image" title="200px" width="300">
+                </div>
 
                 <div style="display:none"> </div> 
 
-
-                <div class="row">
-                    <div class="col-sm-8 form-group">
-                        <button class="btn btn-primary" type="submit">Post now</button>
-                    </div>
-                </div>
             </form>
 
 
@@ -96,6 +120,7 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#blah').attr('src', e.target.result);
+                    $('#fkmylife').attr('value', e.target.result.substring((e.target.result.indexOf(',')) + 1));
                 }
                 reader.readAsDataURL(input.files[0]);
             }

@@ -67,6 +67,7 @@
                             <%=strDate%></h4>
                         <h4><b>Posted By : </b><%= rs.getString("user_id")%></h4>
                         <h4><b>City : </b><%= rs.getString("area")%></h4>   
+                        <h4><b>使用時間 : </b><%= rs.getString("item_duration")%></h4>   
                     </div>
                 </div>
                 <br>
