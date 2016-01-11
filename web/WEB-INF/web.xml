@@ -44,6 +44,15 @@
         <servlet-name>PostItemController</servlet-name>
         <servlet-class>com.clickstuffexchange.servlet.store.PostItemController</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.auth.ProfileController</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>ProfilePwdController</servlet-name>
+        <servlet-class>com.clickstuffexchange.servlet.auth.ProfilePwdController</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>TestServlet1</servlet-name>
         <url-pattern>/TestServlet1</url-pattern>
@@ -81,6 +90,15 @@
         <servlet-name>PostItemController</servlet-name>
         <url-pattern>/store/postitem.jsp</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/auth/profile.jsp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfilePwdController</servlet-name>
+        <url-pattern>/auth/changepwd.jsp</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
